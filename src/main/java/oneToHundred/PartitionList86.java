@@ -11,15 +11,39 @@ import utils.ParamUtils;
  */
 public class PartitionList86 {
     public ListNode result1(ListNode head, int x) {
-        ListNode result = null;
-        return result;
+        ListNode result = new ListNode(0);
+        result.next = head;
+        ListNode pre = result;
+        ListNode left = null;
+        ListNode leftPre = null;
+        ListNode curr = result.next;
+        while (curr != null) {
+            if (curr.val < x) {
+                if (left != null) {
+                    pre.next = curr.next;
+                    leftPre.next = curr;
+                    curr.next = left;
+                    leftPre = curr;
+                    curr = pre.next;
+                    continue;
+                }
+            } else {
+                if (left == null) {
+                    left = curr;
+                    leftPre = pre;
+                }
+            }
+            pre = curr;
+            curr = curr.next;
+        }
+        return result.next;
     }
 
     @Test
     public void partition() {
-        String listNode = "";
+        String listNode = "1->4->3->2->5->2";
         ListNode head = ParamUtils.getListNode(listNode);
-        int x = 0;
+        int x = 3;
         Object result = result1(head, x);
         PrintUtils.print(result);
     }
