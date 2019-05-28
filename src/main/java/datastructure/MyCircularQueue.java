@@ -5,65 +5,77 @@ package datastructure;
  * @author: liangenmao
  */
 public class MyCircularQueue {
-        Integer first = null;
-    Integer last = null;
-    int[] values = null;
-    int length = 0;
+    int head;
+    int tail;
+    int[] data;
+    int size;
 
-    /** Initialize your data structure here. Set the size of the queue to be k. */
+    /**
+     * Initialize your data structure here. Set the size of the queue to be k.
+     */
     public MyCircularQueue(int k) {
-        values = new int[k];
+        data = new int[k];
+        size = data.length;
+        head = -1;
+        tail = -1;
     }
 
-    /** Insert an element into the circular queue. Return true if the operation is successful. */
+    /**
+     * Insert an element into the circular queue. Return true if the operation is successful.
+     */
     public boolean enQueue(int value) {
-        if(length == values.length){
+        if (isFull() == true) {
             return false;
         }
-        if(last == null){
-            first = 0;
-            last = 0;
-        }else if (last == values.length - 1){
-            last = 0;
-        }else{
-            last ++;
+        if (isEmpty() == true) {
+            head = 0;
         }
-        values[last] = value;
-        length ++;
+        tail = (tail + 1) % size;
+        data[tail] = value;
         return true;
     }
 
-    /** Delete an element from the circular queue. Return true if the operation is successful. */
+    /**
+     * Delete an element from the circular queue. Return true if the operation is successful.
+     */
     public boolean deQueue() {
-        if(length == 0){
+        if (isEmpty() == true) {
             return false;
         }
-        if (length == 1){
-            first = last = null;
-        }else{
-            first = first == values.length - 1 ? 0 : first + 1;
+        if (head == tail) {
+            head = -1;
+            tail = -1;
+            return true;
         }
-        length --;
+        head = (head + 1) % size;
         return true;
     }
 
-    /** Get the front item from the queue. */
+    /**
+     * Get the front item from the queue.
+     */
     public int Front() {
-        return first == null ? -1 : values[first];
+        return isEmpty() ? -1 : data[head];
     }
 
-    /** Get the last item from the queue. */
+    /**
+     * Get the tail item from the queue.
+     */
     public int Rear() {
-        return last == null ? -1 : values[last];
+        return isEmpty() ? -1 : data[tail];
     }
 
-    /** Checks whether the circular queue is empty or not. */
+    /**
+     * Checks whether the circular queue is empty or not.
+     */
     public boolean isEmpty() {
-        return length == 0;
+        return head == -1;
     }
 
-    /** Checks whether the circular queue is full or not. */
+    /**
+     * Checks whether the circular queue is full or not.
+     */
     public boolean isFull() {
-        return length == values.length;
+        return ((tail + 1) % size) == head;
     }
 }
