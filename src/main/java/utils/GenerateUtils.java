@@ -250,9 +250,9 @@ public class GenerateUtils {
         String title;
         String method;
         title = "";
-        title = "86. Partition List";
+        title = "12. decodeString";
         method = "";
-        method = "    public ListNode partition(ListNode head, int x) {\n" +
+        method = "    public String decodeString(String s) {\n" +
                 "        \n" +
                 "    }";
         generateQuestion(title, method);
