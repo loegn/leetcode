@@ -24,14 +24,13 @@ public class PrintUtils {
     }
 
     public static void print(Object o) {
-/*        if (o instanceof int[][]) {
+        if (o instanceof int[][]) {
             print((int[][]) o);
         } else if (o instanceof int[]) {
             print((int[]) o);
         } else {
             System.out.println(o);
-        }*/
-        System.out.println(o);
+        }
     }
 
     public static void print(int[][] ints) {

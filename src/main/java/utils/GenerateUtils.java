@@ -250,9 +250,9 @@ public class GenerateUtils {
         String title;
         String method;
         title = "";
-        title = "12. decodeString";
+        title = "12. canVisitAllRooms";
         method = "";
-        method = "    public String decodeString(String s) {\n" +
+        method = "    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n" +
                 "        \n" +
                 "    }";
         generateQuestion(title, method);
