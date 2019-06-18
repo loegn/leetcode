@@ -250,9 +250,9 @@ public class GenerateUtils {
         String title;
         String method;
         title = "";
-        title = "12. canVisitAllRooms";
+        title = "89. grayCode";
         method = "";
-        method = "    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n" +
+        method = "    public List<Integer> grayCode(int n) {\n" +
                 "        \n" +
                 "    }";
         generateQuestion(title, method);
