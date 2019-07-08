@@ -18,6 +18,13 @@ public class GenerateUtils {
     private static final String SOURCE_PREFIX = "./src/main/resources/template";
     private static final String TARGET_PREFIX = "./src/main/java";
     private static String[] numbers = {"one", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    private static String[] upperNumbers = new String[numbers.length];
+
+    static {
+        for (int i = 0; i < numbers.length; i++) {
+            upperNumbers[i] = numbers[i].substring(0,1).toUpperCase() + numbers[i].substring(1);
+        }
+    }
 
     public static class Param {
         private String type;
@@ -190,12 +197,17 @@ public class GenerateUtils {
     }
 
     private static String getPackageName(int num) {
+        StringBuilder sb = new StringBuilder();
         if (num > 999) {
-            throw new IllegalArgumentException();
+            sb.append("OneThousandAnd");
+            num -= 1000;
         }
         num /= 100;
         String hundred = "Hundred";
-        return numbers[num] + (num == 0 ? "" : hundred) + "To" + (num + 1 <= 1 ? "" : (numbers[num + 1].substring(0, 1).toUpperCase() + numbers[num + 1].substring(1))) + hundred;
+        String result = upperNumbers[num] + (num == 0 ? "" : hundred) + "To" + (num + 1 <= 1 ? "" : (upperNumbers[num + 1].substring(0, 1).toUpperCase() + upperNumbers[num + 1].substring(1))) + hundred;
+        result = sb.append(result).toString();
+        result = result.substring(0,1).toLowerCase() + result.substring(1);
+        return result;
     }
 
     private static String toUp(String s) {
@@ -212,14 +224,15 @@ public class GenerateUtils {
         config.setObjectWrapper(new DefaultObjectWrapper());
         Template formBeanTemplate = null;
         try {
+            File targetFile = new File(targetPath.substring(0, targetPath.lastIndexOf('/')));
+            if (!targetFile.exists()) {
+                targetFile.mkdir();
+            }
             if (new File(targetPath).exists()) {
                 throw new FileAlreadyExistsException(targetPath + "已存在");
             }
-            File file = new File(sourcePath);
-            if (!file.exists()) {
-                file.mkdir();
-            }
-            config.setDirectoryForTemplateLoading(file);
+            File sourceFile = new File(sourcePath);
+            config.setDirectoryForTemplateLoading(sourceFile);
             formBeanTemplate = config.getTemplate(templateName, "UTF-8");
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(targetPath), "UTF-8"));
             formBeanTemplate.process(params, out);
@@ -250,9 +263,9 @@ public class GenerateUtils {
         String title;
         String method;
         title = "";
-        title = "89. grayCode";
+        title = "1108. defangIPaddr";
         method = "";
-        method = "    public List<Integer> grayCode(int n) {\n" +
+        method = "    public String defangIPaddr(String address) {\n" +
                 "        \n" +
                 "    }";
         generateQuestion(title, method);
