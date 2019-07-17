@@ -9,6 +9,7 @@ import java.nio.file.FileAlreadyExistsException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @date : 2019/04/24 15:26
@@ -199,8 +200,9 @@ public class GenerateUtils {
     private static String getPackageName(int num) {
         StringBuilder sb = new StringBuilder();
         if (num > 999) {
-            sb.append("OneThousandAnd");
-            num -= 1000;
+            sb.append(upperNumbers[num/1000]);
+            sb.append("ThousandAnd");
+            num %= 1000;
         }
         num /= 100;
         String hundred = "Hundred";
@@ -263,9 +265,9 @@ public class GenerateUtils {
         String title;
         String method;
         title = "";
-        title = "1108. defangIPaddr";
+        title = "5130. smallestSufficientTeam";
         method = "";
-        method = "    public String defangIPaddr(String address) {\n" +
+        method = "    public int[] smallestSufficientTeam(String[] req_skills, List<List<String>> people) {\n" +
                 "        \n" +
                 "    }";
         generateQuestion(title, method);
