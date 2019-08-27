@@ -265,9 +265,9 @@ public class GenerateUtils {
         String title;
         String method;
         title = "";
-        title = "5130. smallestSufficientTeam";
+        title = "1169. invalidTransactions";
         method = "";
-        method = "    public int[] smallestSufficientTeam(String[] req_skills, List<List<String>> people) {\n" +
+        method = "    public List<String> invalidTransactions(String[] transactions) {\n" +
                 "        \n" +
                 "    }";
         generateQuestion(title, method);
