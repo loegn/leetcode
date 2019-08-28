@@ -104,7 +104,17 @@ public class ParamUtils {
     public static ListNode getListNode(String listNodes){
         ListNode result = new ListNode(0);
         ListNode curr = result;
-        String[] strings = listNodes.trim().replaceAll(" ","").split("->");
+        String[] strings;
+        if (listNodes.contains("->")){
+            strings = listNodes.trim().replaceAll(" ","").split("->");
+        }else if (listNodes.contains("[")){
+            strings = listNodes.trim().replaceAll(" ","")
+                    .replaceAll("]","")
+                    .replaceAll("\\[","")
+                    .split(",");
+        }else {
+            throw new RuntimeException("convert error");
+        }
         for (String string : strings) {
             ListNode listNode = new ListNode(Integer.parseInt(string));
             curr.next = listNode;
