@@ -80,6 +80,7 @@ public class InvalidTransactions1169 {
             String[] value = transaction.split(",");
             TransactionBean transactionBean = new TransactionBean(value[0], Integer.parseInt(value[1]),
                     Integer.parseInt(value[2]), value[3]);
+            //可优化为Map<name，List<TransactionBean>>
             beanList.add(transactionBean);
         }
         beanList.sort(Comparator.comparingInt(TransactionBean::getTime));

@@ -265,9 +265,9 @@ public class GenerateUtils {
         String title;
         String method;
         title = "";
-        title = "1169. invalidTransactions";
+        title = "1171. removeZeroSumSublists";
         method = "";
-        method = "    public List<String> invalidTransactions(String[] transactions) {\n" +
+        method = "    public ListNode removeZeroSumSublists(ListNode head) {\n" +
                 "        \n" +
                 "    }";
         generateQuestion(title, method);
