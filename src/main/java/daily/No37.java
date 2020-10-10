@@ -1,4 +1,4 @@
-package daily.twenty.septmber;
+package daily;
 
 public class No37 {
     public void solveSudoku(char[][] board) {

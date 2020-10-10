@@ -1,4 +1,4 @@
-package daily.twenty.septmber;
+package daily;
 
 import pojo.ListNode;
 

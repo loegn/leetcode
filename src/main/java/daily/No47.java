@@ -1,9 +1,8 @@
-package daily.twenty.septmber;
+package daily;
 
 import utils.PrintUtils;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class No47 {
     boolean[] vis;

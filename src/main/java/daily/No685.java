@@ -1,4 +1,4 @@
-package daily.twenty.septmber;
+package daily;
 
 public class No685 {
     public int[] findRedundantDirectedConnection(int[][] edges) {
