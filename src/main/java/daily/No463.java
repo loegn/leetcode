@@ -4,7 +4,28 @@ public class No463 {
     static int[] dx = {0, 1, 0, -1};
     static int[] dy = {1, 0, -1, 0};
 
-    public int islandPerimeter(int[][] grid) {
+    public int islandPerimeter1(int[][] grid) {
+        int n = grid.length, m = grid[0].length;
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                if (grid[i][j] == 1) {
+                    int cnt = 0;
+                    for (int k = 0; k < 4; ++k) {
+                        int tx = i + dx[k];
+                        int ty = j + dy[k];
+                        if (tx < 0 || tx >= n || ty < 0 || ty >= m || grid[tx][ty] == 0) {
+                            cnt += 1;
+                        }
+                    }
+                    ans += cnt;
+                }
+            }
+        }
+        return ans;
+    }
+
+    public int islandPerimeter2(int[][] grid) {
         int n = grid.length, m = grid[0].length;
         int ans = 0;
         for (int i = 0; i < n; ++i) {
@@ -34,7 +55,7 @@ public class No463 {
         return res;
     }
 
-    public int islandPerimeter2(int[][] grid) {
+    public int islandPerimeter3(int[][] grid) {
         int result = 0;
         int[][] forward = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         for (int i = 0; i < grid.length; i++) {
@@ -55,6 +76,6 @@ public class No463 {
 
     public static void main(String[] args) {
         No463 no463 = new No463();
-        no463.islandPerimeter(new int[][]{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}});
+        no463.islandPerimeter3(new int[][]{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}});
     }
 }
