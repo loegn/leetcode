@@ -50,7 +50,7 @@ public class No659 {
         BigDecimal divisor = bigDecimal.pow(256);
         BigDecimal dividend = divisor.add(new BigDecimal(-1));
         BigDecimal multiplier = new BigDecimal(2).pow(128);
-        BigDecimal result = dividend.divide(divisor).pow(multiplie);
-        System.out.println(result);
+//        BigDecimal result = dividend.divide(divisor).pow(multiplier);
+//        System.out.println(result);
     }
 }
